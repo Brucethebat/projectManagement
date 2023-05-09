@@ -1,4 +1,6 @@
-﻿{%load static%}
+{%load static%}
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,20 +28,37 @@
 
 <body>
 
-    <div class="main-wrapper">
-
-        {%include 'engine/navbar.html'%}
-
-
-        {%include 'engine/sidebar.html'%}
-
-        <div class="page-wrapper">
-            {%block content%}
-            {%endblock%}
+    <div class="account-page">
+        <div class="container">
+            <h3 class="account-title text-white">Login</h3>
+            <div class="account-box">
+                <div class="account-wrapper">
+                    <div class="account-logo">
+                        <a href="index.html"><img src="{%static 'assets/img/1.png'%}" alt="SchoolAdmin"></a>
+                    </div>
+                    <form action="index.html">
+                        <div class="form-group">
+                            <label>Username or Email</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="form-group text-center custom-mt-form-group">
+                            <button class="btn btn-primary btn-block account-btn" type="submit">Login</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="forgot-password.html">Forgot your password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    
-    
+
+
+
 
 
 
