@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout
+
+
 
 
 @login_required(login_url='engine:loginurls')
@@ -12,6 +15,7 @@ def homeView(request):
 def teachersView(request):
     return render(request, 'engine/teachers.html')
 
+@login_required(login_url='engine:loginurls')
 def studentsView(request):
     return render(request, 'engine/students.html')
 
@@ -71,10 +75,16 @@ def ssettingView(request):
 
 
 def loginView( request):
-    
+
+    if request.method == 'POST':
+        if request.POST.get('username', False) and request.POST.get('password', False):
+            user = authenticate(username = request.POST.get('username'), password = request.POST.get('password'))
+            if user is not None:
+                login(request, user)
+                return redirect('engine:homeURL')
     return render(request, 'engine/login.html')
 
 
-def homeView(request):
-    return render(request, 'engine/home.html')
-
+def logoutView(request):
+    logout(request)
+    return redirect('engine:homeURL')

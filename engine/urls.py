@@ -5,6 +5,7 @@ app_name = 'engine'
 
 urlpatterns = [
     path('login', views.loginView, name='loginurls'),
+    path('logout', views.logoutView, name='logoutUrl'),
     path('', views.homeView, name='homeURL'),
     path('teachers', views.teachersView, name='teachersURL'),
     path('students', views.studentsView, name='studentsURL'),
